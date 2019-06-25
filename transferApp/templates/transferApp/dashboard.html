@@ -1,0 +1,22 @@
+{% if user.is_authenticated %}
+	{{user.last_login}}
+	<p><a href="{% url 'logout' %}">logout</a></p>
+		
+	{% if rateList %}
+		<ul>
+		{% for rate in rateList %}
+			<li>{{rate.unitRate}}</li>
+			<li>{{rate.currency_from}}</li>
+			<li>{{rate.currency_to}}</li>
+			<li>{{rate.rate_set}}</li>
+			<li>{{rate.rate_status}}</li>
+			<li>{{rate.rate_description}}</li>
+			<hr />
+		{% endfor %}
+		</ul>
+	{% else %}
+			<p>No rate available</p>
+	{% endif %}
+{% else %}
+	<p>you are not logged in</p>
+{% endif %}
